@@ -313,7 +313,7 @@ class BaseCursor:
             payload["fetch_size"] = self.fetch_size
         if self.time_zone is not None:
             payload["time_zone"] = self.time_zone
-        path = f"/{self.sql_path}/"
+        path = f"/{self.sql_path}/?format=jdbc"
         try:
             response = self.es.transport.perform_request("POST", path, body=payload)
         except es_exceptions.ConnectionError:
